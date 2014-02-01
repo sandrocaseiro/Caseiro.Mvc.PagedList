@@ -1,0 +1,28 @@
+﻿@model Caseiro.Mvc.PagedList.PagedList<Caseiro.Mvc.PagedList.Example.Mvc4.Models.User>
+
+<table class="table table-striped table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.Id</td>
+				<td>@item.Name</td>
+				<td>@item.Email</td>
+			</tr>
+		}
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3">
+				@Html.Pager(Model, page => Url.Action("index", new  { page = page }))
+			</td>
+		</tr>
+	</tfoot>
+</table>
