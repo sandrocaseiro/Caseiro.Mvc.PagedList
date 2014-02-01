@@ -213,32 +213,34 @@ public class UsersController : Controller
 
 ## Pager and TableHeaderColumn Helpers
 
-You have two options for the Pager helper:
+You have two options for the Pager helper. For simple paging, use:
 
 ```csharp
 @Html.Pager(PagedList, page => Url.Action("index", new { page = page }))
 @Html.PagerFor(m => m.PagedList, page => Url.Action("index", new { page = page }))
 ```
-for simple paging
-or
+
+Or for paging using filters and ordering:
 ```csharp
 @Html.PagerFilter(PagedList, FilterModel, page => Url.Action("index", new { page = page }))
 @Html.PagerFilterFor(m => m.PagedList, page => Url.Action("index", new { page = page }))
 ```
-for paging filtering. In this case, you can use the TableHeaderColumn helpers to order the results while maintaining filters.
+
+In this case, you can use the TableHeaderColumn helpers to order the results while maintaining filters.
 
 To display the columns individually, use:
 ```csharp
 @Html.TableHeaderColumnFor(Url.Action("index"), m => m.OrderField, m => m.OrderDirection, m => m.PagedList.Model.Id)
 ```
 
-or you can display all the columns:
+or you can display multiple columns:
 ```csharp
 @Html.TableHeaderColumnsFor(Url.Action("index"), m => m.OrderField, m => m.OrderDirection, 
 m => new 
 { 
    m.PagedList.Model.Id,
-   m.PagedList.Model.Id
+   m.PagedList.Model.Name,
+   m.PagedList.Model.Email
 })
 ```
 
@@ -256,7 +258,7 @@ var user = new User { Id = 1, Name = "User", Email = "user@domain.com" };
 user.ToQueryString() //generates: ?Id=1&Name=User&Email=user@domain.com
 ```
 
-If doesn't want a property in the querystring, you can use the `[IgnoreQueryString]` attribute:
+If you doesn't want a property in the querystring, you can use the `[IgnoreQueryString]` attribute:
 ```csharp
 public class User
 {
@@ -269,7 +271,7 @@ var user = new User { Id = 1, Name = "User", Email = "user@domain.com" };
 user.ToQueryString() //generates: ?Name=User&Email=user@domain.com
 ```
 
-You can also change the value of some property directly on the querystring generation without changind the value on the property itself:
+You can also change the value of some property directly on the querystring generation without changing the value on the property itself:
 ```csharp
 public class User
 {
