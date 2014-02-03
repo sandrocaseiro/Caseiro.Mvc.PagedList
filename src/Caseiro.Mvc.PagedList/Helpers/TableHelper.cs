@@ -42,29 +42,6 @@ namespace Caseiro.Mvc.PagedList.Helpers
 
 				if (orderDirectionValue == OrderDirection.Ascending)
 				{
-					if (!string.IsNullOrWhiteSpace(columnOptions.DescendingContainerCssClass))
-					{
-						th.AddCssClass(columnOptions.DescendingContainerCssClass);
-					}
-
-					if (!string.IsNullOrWhiteSpace(columnOptions.DescendingLinkCssClass))
-					{
-						a.AddCssClass(columnOptions.DescendingLinkCssClass);
-					}
-
-					if (columnOptions.DescendingLinkAdditionalContentPosition == TableHeaderColumnOptions.AdditionalContentPosition.AfterTitle
-						&& !string.IsNullOrWhiteSpace(columnOptions.DescendingLinkAdditionalContent))
-					{
-						a.InnerHtml += columnOptions.DescendingLinkAdditionalContent;
-					}
-					else if (columnOptions.DescendingLinkAdditionalContentPosition == TableHeaderColumnOptions.AdditionalContentPosition.BeforeTitle
-						&& !string.IsNullOrWhiteSpace(columnOptions.DescendingLinkAdditionalContent))
-					{
-						a.InnerHtml = columnOptions.DescendingLinkAdditionalContent + a.InnerHtml;
-					}
-				}
-				else
-				{
 					if (!string.IsNullOrWhiteSpace(columnOptions.AscendingContainerCssClass))
 					{
 						th.AddCssClass(columnOptions.AscendingContainerCssClass);
@@ -84,6 +61,29 @@ namespace Caseiro.Mvc.PagedList.Helpers
 						&& !string.IsNullOrWhiteSpace(columnOptions.AscendingLinkAdditionalContent))
 					{
 						a.InnerHtml = columnOptions.AscendingLinkAdditionalContent + a.InnerHtml;
+					}
+				}
+				else
+				{
+					if (!string.IsNullOrWhiteSpace(columnOptions.DescendingContainerCssClass))
+					{
+						th.AddCssClass(columnOptions.DescendingContainerCssClass);
+					}
+
+					if (!string.IsNullOrWhiteSpace(columnOptions.DescendingLinkCssClass))
+					{
+						a.AddCssClass(columnOptions.DescendingLinkCssClass);
+					}
+
+					if (columnOptions.DescendingLinkAdditionalContentPosition == TableHeaderColumnOptions.AdditionalContentPosition.AfterTitle
+						&& !string.IsNullOrWhiteSpace(columnOptions.DescendingLinkAdditionalContent))
+					{
+						a.InnerHtml += columnOptions.DescendingLinkAdditionalContent;
+					}
+					else if (columnOptions.DescendingLinkAdditionalContentPosition == TableHeaderColumnOptions.AdditionalContentPosition.BeforeTitle
+						&& !string.IsNullOrWhiteSpace(columnOptions.DescendingLinkAdditionalContent))
+					{
+						a.InnerHtml = columnOptions.DescendingLinkAdditionalContent + a.InnerHtml;
 					}
 				}
 			}
