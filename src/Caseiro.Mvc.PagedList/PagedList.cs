@@ -61,6 +61,7 @@ namespace Caseiro.Mvc.PagedList
 			ActualPage = page;
 			TotalCount = queryable.Count();
 			PageCount = (int)Math.Ceiling(TotalCount / (double)pageSize);
+			PageCount = PageCount == 0 ? 1 : PageCount;
 			PageSize = pageSize;
 
 			int skip = (ActualPage - 1) * pageSize;
@@ -81,6 +82,7 @@ namespace Caseiro.Mvc.PagedList
 			ActualPage = page;
 			TotalCount = queryable.Count();
 			PageCount = (int)Math.Ceiling(TotalCount / (double)pageSize);
+			PageCount = PageCount == 0 ? 1 : PageCount;
 			PageSize = pageSize;
 
 			int skip = (ActualPage - 1) * pageSize;
