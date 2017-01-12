@@ -45,7 +45,7 @@ namespace Caseiro.Mvc.PagedList.Extensions
 		/// <typeparam name="T">The type of the object to be transformed to a querytring</typeparam>
 		/// <param name="model">The object instance to be transformed to a querytring</param>
 		/// <returns>A url querystring using the property names and values of the informed class</returns>
-		public static string ToQueryString<T>(this T model)
+		public static string ToQueryString<T>(this T model, string prefix="?")
 		{
 			var keyPairs = typeof(T).GetProperties().Where(p => p.PropertyType.IsSerializable &&
 				!p.GetCustomAttributes(false).Any(a => a.GetType().Equals(typeof(Attributes.IgnoreQueryStringAttribute))))
@@ -60,7 +60,7 @@ namespace Caseiro.Mvc.PagedList.Extensions
 				}
 				queryString.Append(String.Format("{0}={1}", item.Key, item.Value));
 			}
-			return "?" + queryString.ToString();
+			return prefix + queryString.ToString();
 		}
 
 		/// <summary>
