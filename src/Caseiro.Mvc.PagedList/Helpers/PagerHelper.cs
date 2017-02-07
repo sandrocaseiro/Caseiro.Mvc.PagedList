@@ -62,7 +62,7 @@ namespace Caseiro.Mvc.PagedList.Helpers
 			}
 			else
 			{
-				a.Attributes.Add("href", urlFunction(page) + filterModel.ToQueryString());
+				a.Attributes.Add("href", urlFunction(page) + filterModel.ToQueryString("&") );
 			}
 
 			if (pageType == PageType.First)
